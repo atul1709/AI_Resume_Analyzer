@@ -1,0 +1,6 @@
+python sql excel statistics
+data analysis machine learning
+html css javascript react
+flask django backend development
+docker kubernetes cloud aws
+software engineering projects internships

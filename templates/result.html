@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Analysis Result</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container my-5">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Resume Insights</h2>
+        <button class="btn btn-outline-secondary btn-sm" onclick="toggleTheme()">
+            🌗 Toggle Light / Dark
+        </button>
+    </div>
+
+    <!-- ATS SCORE CARD -->
+    <div class="card mb-4">
+        <h4>ATS Compatibility Score</h4>
+
+        <div class="progress mb-2" style="height: 25px;">
+            <div class="progress-bar bg-success"
+                 role="progressbar"
+                 style="width: {{ ats }}%;">
+                {{ ats }}%
+            </div>
+        </div>
+
+        {% if ats < 40 %}
+            <p class="text-danger">Low ATS score – resume needs improvement.</p>
+        {% elif ats < 70 %}
+            <p class="text-warning">Moderate ATS score – some improvements recommended.</p>
+        {% else %}
+            <p class="text-success">Strong ATS score – resume is well optimized.</p>
+        {% endif %}
+    </div>
+
+    <!-- TOP CAREER PREDICTIONS -->
+    <div class="card mb-4">
+        <h4>Top Career Matches (ML Prediction)</h4>
+
+        {% for c in top_careers %}
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <strong>{{ loop.index }}. {{ c.career }}</strong>
+                <span class="badge bg-primary">{{ c.confidence }}%</span>
+            </div>
+        {% endfor %}
+
+        <small class="text-muted">
+            Predictions are based on skill similarity and ML confidence scores.
+        </small>
+    </div>
+
+    <!-- SKILLS SECTION -->
+    <div class="card mb-4">
+        <h4>Your Extracted Skills</h4>
+
+        {% if skills %}
+            {% for s in skills %}
+                <span class="skill">{{ s }}</span>
+            {% endfor %}
+        {% else %}
+            <p class="text-danger">No clear skills detected. Add a skills section in your resume.</p>
+        {% endif %}
+    </div>
+
+    <!-- AUTO RESUME FEEDBACK -->
+    <div class="card mb-4">
+        <h4>Resume Improvement Feedback</h4>
+
+        <ul>
+            {% for f in feedback %}
+                <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- ACTION BUTTON -->
+    <div class="text-center">
+        <a href="/" class="btn btn-secondary">Analyze Another Resume</a>
+    </div>
+
+</div>
+
+<!-- THEME TOGGLE SCRIPT -->
+<script>
+function toggleTheme() {
+    if (document.body.getAttribute("data-theme") === "dark") {
+        document.body.removeAttribute("data-theme");
+    } else {
+        document.body.setAttribute("data-theme", "dark");
+    }
+}
+</script>
+
+</body>
+</html>
