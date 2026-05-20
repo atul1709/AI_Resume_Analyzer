@@ -27,3 +27,22 @@ AI Resume Analyzer is a Machine Learning–based web application that evaluates 
 pip install -r requirements.txt
 python train_models.py
 python app.py
+
+📊 Sample Output
+Resume Skills Found:    Python, SQL, Power BI, Data Analysis, EDA
+Job Description Skills: Python, SQL, Tableau, Machine Learning, EDA
+
+Match Score: 72%
+
+Missing Skills: Tableau, Machine Learning
+Recommendation: Add Tableau and ML projects to improve match.
+
+💡 What I Learned
+
+How to extract structured information from unstructured text using NLP
+How ATS (Applicant Tracking Systems) work and what they filter for
+Keyword matching and text similarity techniques
+
+
+📬 Contact
+Atul Gupta — LinkedIn · Email
