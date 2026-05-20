@@ -22,12 +22,6 @@ AI Resume Analyzer is a Machine Learning–based web application that evaluates 
 - Frontend: HTML, CSS, Bootstrap  
 - Resume Parsing: PyMuPDF  
 
-## How to Run
-```bash
-pip install -r requirements.txt
-python train_models.py
-python app.py
-
 ## Sample Output
 Resume Skills Found:    Python, SQL, Power BI, Data Analysis, EDA
 Job Description Skills: Python, SQL, Tableau, Machine Learning, EDA
